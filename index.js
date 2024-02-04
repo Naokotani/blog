@@ -1,14 +1,14 @@
 const express = require('express')
 const app = express()
-const port = 3322
 const fs = require('node:fs').promises;
 const path = require('path');
 const Sqrl = require('squirrelly');
 const cheerio = require('cheerio');
 require('dotenv').config();
 
+const PORT = process.env.PORT;
 const API_URL = process.env.API_URL;
-console.log(API_URL);
+const POSTS = path.join(__dirname, '/posts/');
 
 app.use(express.static('src'));
 
@@ -18,7 +18,7 @@ app.get('/cards', async function (req, res) {
 })
 
 app.get('/blog', async function (req, res) {
-	const files = await fs.readdir('/home/naokotani/code/blog/posts/')
+	const files = await fs.readdir(POSTS)
 
 	let labels = []
 
@@ -38,8 +38,7 @@ app.get('/blog', async function (req, res) {
 app.get('/blog/*', async function (req, res) {
 	const slug = req.params[0];
 	if (req.headers["hx-request"] === "true") {
-		const path = '/home/naokotani/code/blog/posts/'
-		const data = await fs.readFile(path+slug, 'utf8')
+		const data = await fs.readFile(POSTS+slug, 'utf8')
 		res.send(data);
 	} else {
 		const route = [slug]
@@ -53,8 +52,8 @@ app.get('/blog/*', async function (req, res) {
 	}
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 })
 
 function makeTitle(slug) {
@@ -70,17 +69,16 @@ function makeTitle(slug) {
 }
 
 async function makeCards() {
-  const path = '/home/naokotani/code/blog/posts/'
 	let summaries = [];
 	let titles = [];
 	let links = [];
 	let images = [];
 
-	const files = await fs.readdir(path);
+	const files = await fs.readdir(POSTS);
 
 	for (file of files) {
 		const img = file.split(".");
-		const data = await fs.readFile(path+file, 'utf8');
+		const data = await fs.readFile(POSTS+file, 'utf8');
 		links.push(file);
 		titles.push(makeTitle(file));
 		images.push(img[0] + ".png")
