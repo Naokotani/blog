@@ -1,0 +1,342 @@
+@font-face {
+    font-family: 'Libre Baskerville', serif;
+	src: url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400&display=swap');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro', sans-serif;
+	src: url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400&display=swap');
+}
+
+:root {
+  /*Light mode pallette*/
+
+  --white: #fefefe;
+  --lightGrey: #bfbfbf;
+  --grey: #404040;
+  --darkGrey: #2b2b2b;
+  --black: #141414;
+  --blacker: #101010;
+	--darkRed: #800000;
+	--red: #ff0000;
+	--purple: #230631;
+  --bluePurple: #060630;
+  --deepPurple: #140630;
+	--lightPink: #E8DEFC;
+
+  --linkUnderline: var(--blue);
+  --background: var(--black);
+  --textColor: var(--white);
+  --lineColor: var(--purple);
+  --headerText: var(--white);
+  --cardBg: var(--lightGrey);
+  --cardText: var(--black);
+	--anchorColor: var(--red);
+	--buttonColor: var(--darkGrey);
+	--buttonText: var(--white);
+	--buttonHoverText: var(--red);
+	--navColor: var(--deepPurple);
+	--navText: var(--lightPink);
+	--navHover: var(--white);
+	--headerColor: var(--deepPurple);
+	--codeBlocks: var(--purple);
+	--code: var(--lightGrey);
+	--linksBar: var(--black);
+	--linkColor: var(--lightPink);
+	--linkHover: var(--white);
+
+	--purpleShadow: inset 0 4px 6px -1px rgba(35, 6, 49, 0.1),
+									0 2px 4px -1px rgba(35, 6, 49, 0.06),
+									0 0 1px 0 rgba(35, 6, 49, 0.04);
+
+  /*Styles*/
+  --line: solid 2px var(--lineColor);
+  --headerHeight: 5rem;
+  --containerPadding: 10%;
+
+  /*Elevations*/
+  --level-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --level-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --level-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --level-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --cardShadow: 0 2px 18px rgb(34 34 34 / 20%);
+  --cardTransition: box-shadow 200ms;
+
+  /* Fonts */
+  --headingFont: 'Source Sans Pro', sans-serif;
+  --bodyFont: 'Libre Baskerville', serif;
+  --baseFontSize: 120%;
+  --h1: 3.052rem;
+  --h2: 2.441rem;
+  --h3: 1.953rem;
+  --h4: 1.563rem;
+  --h5: 1.25rem;
+	--smallText: 0.8rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+  font-size: var(--baseFontSize);
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--black);
+  font-family: var(--bodyFont);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--textColor);
+}
+
+p {margin-bottom: 1rem;}
+
+h1, h2, h3, h4, h5 {
+  margin: 3rem 0 1.38rem;
+  font-family: var(--headingFont);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1 {
+	line-height: var(--headerHeight);
+  font-size: var(--h2);
+	margin: 0;
+}
+
+h2 {font-size: var(--h3)}
+
+h3 {font-size: var(--h4);}
+
+h4 {font-size: var(--h5);}
+
+h5 {font-size: var(--h5);}
+
+small, .text_small {font-size: var(--smallText);}
+
+a {
+	text-decoration: none;
+	color: var(--linkColor);
+}
+
+a:hover {
+	--linkColor: var(--linkHover);
+	color: var(--linkColor);
+}
+
+p a {
+	color: var(--anchorColor);
+}
+
+button {
+  appearance: none;
+  color: var(--buttonText);
+  background-color: var(--buttonColor);
+  border: none;
+  padding: 5px 25px;
+  box-shadow: var(--level-2);
+  transition: 0.3s ease-in-out box-shadow;
+	cursor: pointer;
+}
+
+button:hover {
+  box-shadow:var(--level-4);
+	color: var(--buttonHoverText);
+}
+
+button[disabled] {
+  opacity: 0.4;
+  border: none;
+  margin: 2px;
+}
+
+button.cancel {
+  --buttonColor: var(--danger);
+  --textColor: var(--white);
+}
+
+button.small {
+  font-size: var(--smallText);
+}
+
+.underline {
+	border-bottom: var(--line);
+}
+
+code {
+	color: var(--code);
+}
+
+ul {
+	padding-left: 1rem;
+}
+
+li {
+	list-style: none;
+}
+
+header a {
+	--anchorText: var(--white);
+	font-size: var(--h4);
+	line-height: var(--headerHeight);
+	margin: 0;
+	color: var(--anchorText);
+}
+
+nav a {
+	--anchorText: var(--navText);
+	color: var(--anchorText);
+	font-size: var(--h5);
+}
+
+nav a:hover {
+	--anchorText: var(--navHover);
+	color: var(--anchorText);
+}
+
+header a {
+	--anchorText: var(--navText);
+	color: var(--anchorText);
+}
+
+header a:hover {
+	--anchorText: var(--navHover);
+	color: var(--anchorText);
+}
+
+nav {
+	background-color: var(--navColor);
+	height: 100vw;
+	width: 16rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	padding-top: 8rem;
+	padding-left: 2rem;
+}
+
+header {
+	background-color: var(--headerColor);
+	position: absolute;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	height: var(--headerHeight);
+	display: flex;
+	padding-right: 20%;
+	justify-content: space-between;
+	padding-left: calc(16rem + 10%);
+}
+
+.git-logo {
+	height: var(--h5);
+}
+
+.home {
+	width: 60rem;
+	margin: auto;
+}
+
+.intro {
+	margin-bottom: 5rem;
+}
+
+#contentDiv {
+	padding-top: 3rem;
+	padding-right: 20%;
+	margin-left: 16rem;
+	margin-top: var(--headerHeight);
+	padding-left: 10%;
+	z-index: -5;
+	border-top: solid 4px var(--purple);
+	border-left: solid 4px var(--purple);
+	border-radius: 5px;
+	min-height: calc(100vh - var(--headerHeight));
+	padding-bottom: 5rem;
+}
+
+.org-src-container {
+	background-color: var(--codeBlocks);
+	padding: 3rem;
+	border-radius: 5px;
+	elevation: var(--level-4);
+	overflow: auto;
+}
+
+.cards {
+    --gridCols: 2;
+    display: grid;
+    grid-template-columns: repeat(var(--gridCols), 1fr);
+    gap: 5px;
+		display: flex;
+		justify-content: space-between;
+}
+
+.card {
+	width: 20rem;
+	min-height: 20rem;
+	background-color: var(--grey);
+	border-radius: 5px;
+}
+
+.card h2 {
+	margin: 0;
+	font-size: var(--h5);
+}
+
+
+.card img {
+	max-width: 20rem;
+}
+
+div.card-content {
+	padding: 1rem;
+}
+
+div.card-content h2 p {
+	color: var(--white);
+}
+
+div.summary {
+	display: none;
+}
+
+@media (min-width: 1025px) {
+	.grid {
+    --gridCols: 2;
+    display: grid;
+    grid-template-columns: repeat(var(--gridCols), 1fr);
+    gap: 5px;
+	}
+
+	.grid img {
+		margin-bottom: 1rem;
+	}
+
+	.aside-right {
+    grid-template-columns: 66% 32%;
+    grid-gap: 2%;
+	}
+
+	.aside-left {
+    grid-template-columns: 32% 66%;
+    grid-gap: 2%;
+	}
+
+
+	.cols-3 {
+    --gridCols: 3;
+	}
+
+	.cols-4 {
+    --gridCols: 4;
+	}
+}
+

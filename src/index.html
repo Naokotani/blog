@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en>
+		<head	>
+				<meta charset="UTF-8"/>
+				<title>Chris Hughes dot Dev</title>
+				<link rel="stylesheet" type="text/css" href="css/normalize.css">
+				<link rel="stylesheet" type="text/css" href="css/styles.css">
+				<meta
+						name="description"
+						content="A Developer blog for Chris Hughes. Specializes in JavaScript, Rust, Web development, SQL" />
+				<script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+		</head>
+		<body>
+				<header>
+						<a href="#"
+							 hx-get="http://localhost:3322/cards"
+							 hx-swap="innerHTML"
+							 hx-push-url="http://localhost:3322/"
+							 hx-target="#contentDiv">
+						<h1>Chris Hughes dot Dev</h1>
+						</a>
+						<a href="https://github.com/Naokotani/">
+								<img class="git-logo" alt="github logo" src="images/github-mark-white.svg"/>
+								Github
+						</a>
+				</header>
+				<nav hx-get="http://localhost:3322/blog"
+						 hx-trigger="load delay:300ms"
+						 class="linksBar"
+						 hx-swap="outerHTML">
+						<h2 class="post-header">Projects</h2>
+				</nav>
+				<div id="contentDiv"
+						 hx-get="http://localhost:3322/cards"
+						 hx-trigger="load delay:300ms"
+						 hx-swap="innerHTML"
+						 hx-target="#contentDiv"></div>
+		</body>
+</html>
