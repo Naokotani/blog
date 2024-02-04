@@ -5,6 +5,10 @@ const fs = require('node:fs').promises;
 const path = require('path');
 const Sqrl = require('squirrelly');
 const cheerio = require('cheerio');
+require('dotenv').config();
+
+const API_URL = process.env.API_URL;
+console.log(API_URL);
 
 app.use(express.static('src'));
 
@@ -14,7 +18,7 @@ app.get('/cards', async function (req, res) {
 })
 
 app.get('/blog', async function (req, res) {
-	const files = await fs.readdir('/home/naokotani/Documents/denote/blog/')
+	const files = await fs.readdir('/home/naokotani/code/blog/posts/')
 
 	let labels = []
 
@@ -34,7 +38,7 @@ app.get('/blog', async function (req, res) {
 app.get('/blog/*', async function (req, res) {
 	const slug = req.params[0];
 	if (req.headers["hx-request"] === "true") {
-		const path = '/home/naokotani/Documents/denote/blog/'
+		const path = '/home/naokotani/code/blog/posts/'
 		const data = await fs.readFile(path+slug, 'utf8')
 		res.send(data);
 	} else {
@@ -66,7 +70,7 @@ function makeTitle(slug) {
 }
 
 async function makeCards() {
-  const path = '/home/naokotani/Documents/denote/blog/'
+  const path = '/home/naokotani/code/blog/posts/'
 	let summaries = [];
 	let titles = [];
 	let links = [];
@@ -101,7 +105,7 @@ function getTemplate() {
 		<ul>
 				{{@each(it.files) => val, index}}
 				<li>
-						<a href="#" hx-push-url="true" hx-get="http://localhost:3322/blog/{{val}}" hx-target="#contentDiv" hx-swap="innerHTML">
+						<a href="#" hx-push-url="true" hx-get="${API_URL}blog/{{val}}" hx-target="#contentDiv" hx-swap="innerHTML">
 						{{it.labels[index]}}
 						</a>
 				</li>
@@ -124,7 +128,7 @@ anthropology from Trent University and studied Editing at George Brown College.
 </p>
 <div class="cards">
 {{@each(it.links) => val, index}}
-<a href="#" hx-get="http://localhost:3322/blog/{{val}}" hx-push-url="true" hx-target="#contentDiv" hx-swap="innerHTML">
+<a href="#" hx-get="${API_URL}blog/{{val}}" hx-push-url="true" hx-target="#contentDiv" hx-swap="innerHTML">
 <div class="card">
 <img alt="{{it.titles[index]}} picture" src="/images/{{it.images[index]}}"/>
 <div class="card-content">
@@ -156,9 +160,9 @@ function newRoute() {
 		<body>
 				<header>
 						<a href="#"
-							 hx-get="http://localhost:3322/cards"
+							 hx-get="${API_URL}cards"
 							 hx-swap="innerHTML"
-							 hx-push-url="http://localhost:3322/"
+							 hx-push-url="${API_URL}"
 							 hx-target="#contentDiv">
 						<h1>Chris Hughes dot Dev</h1>
 						</a>
@@ -167,14 +171,14 @@ function newRoute() {
 								Github
 						</a>
 				</header>
-				<nav hx-get="http://localhost:3322/blog"
+				<nav hx-get="${API_URL}blog"
 						 hx-trigger="load delay:300ms"
 						 class="linksBar"
 						 hx-swap="outerHTML">
 						<h2 class="post-header">Projects</h2>
 				</nav>
 				<div id="contentDiv"
-						 hx-get="http://localhost:3322/blog/{{it.route}}"
+						 hx-get="${API_URL}blog/{{it.route}}"
 						 hx-trigger="load delay:300ms"
 						 hx-swap="innerHTML"
 						 hx-target="#contentDiv"></div>
