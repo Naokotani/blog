@@ -1,53 +1,37 @@
-@font-face {
-    font-family: 'Libre Baskerville', serif;
-	src: url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400&display=swap');
-}
-
-@font-face {
-  font-family: 'Source Sans Pro', sans-serif;
-	src: url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400&display=swap');
-}
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400&display=swap');
 
 :root {
   /*Light mode pallette*/
-
   --white: #fefefe;
   --lightGrey: #bfbfbf;
   --grey: #404040;
   --darkGrey: #2b2b2b;
   --black: #141414;
   --blacker: #101010;
-	--darkRed: #800000;
+	--darkRed: #dd0000;
 	--red: #ff0000;
 	--purple: #230631;
   --bluePurple: #060630;
   --deepPurple: #140630;
 	--lightPink: #E8DEFC;
 
-  --linkUnderline: var(--blue);
+  /*Color intentions*/
   --background: var(--black);
   --textColor: var(--white);
   --lineColor: var(--purple);
   --headerText: var(--white);
   --cardBg: var(--lightGrey);
   --cardText: var(--black);
-	--anchorColor: var(--red);
-	--buttonColor: var(--darkGrey);
-	--buttonText: var(--white);
-	--buttonHoverText: var(--red);
+	--anchorColor: var(--darkRed);
 	--navColor: var(--deepPurple);
 	--navText: var(--lightPink);
 	--navHover: var(--white);
 	--headerColor: var(--deepPurple);
 	--codeBlocks: var(--purple);
 	--code: var(--lightGrey);
-	--linksBar: var(--black);
 	--linkColor: var(--lightPink);
 	--linkHover: var(--white);
-
-	--purpleShadow: inset 0 4px 6px -1px rgba(35, 6, 49, 0.1),
-									0 2px 4px -1px rgba(35, 6, 49, 0.06),
-									0 0 1px 0 rgba(35, 6, 49, 0.04);
 
   /*Styles*/
   --line: solid 2px var(--lineColor);
@@ -118,6 +102,47 @@ h5 {font-size: var(--h5);}
 
 small, .text_small {font-size: var(--smallText);}
 
+nav {
+	background-color: var(--navColor);
+	height: 100vw;
+	width: 16rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	padding-top: 8rem;
+	padding-left: 2rem;
+	display: none;
+}
+
+h1.mobile-h1 {
+	font-size: var(--h3);
+	padding: 1rem 1rem 0 1rem;
+}
+
+header {
+	background-color: var(--headerColor);
+	position: absolute;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	height: var(--headerHeight);
+	display: none;
+	padding-right: 20%;
+	justify-content: space-between;
+	padding-left: calc(16rem + 10%);
+}
+
+.git-logo {
+	height: var(--h5);
+}
+
+.git-logo-light {
+	display: none;
+}
+
 a {
 	text-decoration: none;
 	color: var(--linkColor);
@@ -132,51 +157,9 @@ p a {
 	color: var(--anchorColor);
 }
 
-button {
-  appearance: none;
-  color: var(--buttonText);
-  background-color: var(--buttonColor);
-  border: none;
-  padding: 5px 25px;
-  box-shadow: var(--level-2);
-  transition: 0.3s ease-in-out box-shadow;
-	cursor: pointer;
-}
-
-button:hover {
-  box-shadow:var(--level-4);
-	color: var(--buttonHoverText);
-}
-
-button[disabled] {
-  opacity: 0.4;
-  border: none;
-  margin: 2px;
-}
-
-button.cancel {
-  --buttonColor: var(--danger);
-  --textColor: var(--white);
-}
-
-button.small {
-  font-size: var(--smallText);
-}
-
-.underline {
-	border-bottom: var(--line);
-}
-
-code {
-	color: var(--code);
-}
-
-ul {
-	padding-left: 1rem;
-}
-
-li {
-	list-style: none;
+p a:hover {
+	--linkHover: var(--red);
+	color: var(--linkHover);
 }
 
 header a {
@@ -208,39 +191,20 @@ header a:hover {
 	color: var(--anchorText);
 }
 
-nav {
-	background-color: var(--navColor);
-	height: 100vw;
-	width: 16rem;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 5;
-	padding-top: 8rem;
-	padding-left: 2rem;
+code {
+	color: var(--code);
 }
 
-header {
-	background-color: var(--headerColor);
-	position: absolute;
-	width: 100vw;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 10;
-	height: var(--headerHeight);
-	display: flex;
-	padding-right: 20%;
-	justify-content: space-between;
-	padding-left: calc(16rem + 10%);
+ul {
+	padding-left: 1rem;
 }
 
-.git-logo {
-	height: var(--h5);
+li {
+	list-style: none;
 }
 
 .home {
-	width: 60rem;
+	max-width: 60rem;
 	margin: auto;
 }
 
@@ -248,42 +212,33 @@ header {
 	margin-bottom: 5rem;
 }
 
+div.summary {
+	display: none;
+}
+
 #contentDiv {
-	padding-top: 3rem;
-	padding-right: 20%;
-	margin-left: 16rem;
-	margin-top: var(--headerHeight);
-	padding-left: 10%;
-	z-index: -5;
-	border-top: solid 4px var(--purple);
-	border-left: solid 4px var(--purple);
-	border-radius: 5px;
 	min-height: calc(100vh - var(--headerHeight));
 	padding-bottom: 5rem;
+	padding: 1rem;
 }
 
 .org-src-container {
 	background-color: var(--codeBlocks);
 	padding: 3rem;
 	border-radius: 5px;
-	elevation: var(--level-4);
+	box-shadow: var(--level-4);
 	overflow: auto;
 }
 
-.cards {
-    --gridCols: 2;
-    display: grid;
-    grid-template-columns: repeat(var(--gridCols), 1fr);
-    gap: 5px;
-		display: flex;
-		justify-content: space-between;
-}
-
 .card {
-	width: 20rem;
+	max-width: 20rem;
 	min-height: 20rem;
 	background-color: var(--grey);
 	border-radius: 5px;
+}
+
+.card img {
+	max-width: 100%;
 }
 
 .card h2 {
@@ -291,10 +246,6 @@ header {
 	font-size: var(--h5);
 }
 
-
-.card img {
-	max-width: 20rem;
-}
 
 div.card-content {
 	padding: 1rem;
@@ -304,39 +255,54 @@ div.card-content h2 p {
 	color: var(--white);
 }
 
-div.summary {
-	display: none;
+@media (max-width: 1600px) {
+	.cards {
+		padding-left: calc(50% - 10rem);
+		padding-right: calc(50% - 10rem);
+	}
 }
 
-@media (min-width: 1025px) {
-	.grid {
+@media (min-width: 1600px) {
+	.cards {
     --gridCols: 2;
     display: grid;
     grid-template-columns: repeat(var(--gridCols), 1fr);
     gap: 5px;
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+@media (min-width: 1025px) {
+	header {
+		display: flex;
 	}
 
-	.grid img {
-		margin-bottom: 1rem;
+	nav {
+		display: block;
 	}
 
-	.aside-right {
-    grid-template-columns: 66% 32%;
-    grid-gap: 2%;
+	#contentDiv {
+		padding-top: 3rem;
+		padding-right: 20%;
+		margin-left: 16rem;
+		margin-top: var(--headerHeight);
+		padding-left: 10%;
+		z-index: -5;
+		border-top: solid 4px var(--purple);
+		border-left: solid 4px var(--purple);
+		border-radius: 5px;
+		min-height: calc(100vh - var(--headerHeight));
+		padding-bottom: 5rem;
 	}
 
-	.aside-left {
-    grid-template-columns: 32% 66%;
-    grid-gap: 2%;
+	.card img {
+		max-width: 20rem;
 	}
 
-
-	.cols-3 {
-    --gridCols: 3;
+	h1.mobile-h1 {
+		display: none;
 	}
-
-	.cols-4 {
-    --gridCols: 4;
-	}
+		
 }
 

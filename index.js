@@ -123,6 +123,7 @@ to every project. My dedication to quality and attention to detail ensures that 
 meet and exceed client expectations. With a unique blend of technical skills and creative problem-solving abilities,
 I am well-equipped to tackle a wide range of development challenges. I studied IT programming at NSCC, have a BA in
 anthropology from Trent University and studied Editing at George Brown College.
+<a href="https://github.com/Naokotani/"> Check out my Github</a> to see more projects.
 </p>
 <div class="cards">
 {{@each(it.links) => val, index}}

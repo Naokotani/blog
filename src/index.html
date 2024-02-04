@@ -5,13 +5,14 @@
 				<title>Chris Hughes dot Dev</title>
 				<link rel="stylesheet" type="text/css" href="css/normalize.css">
 				<link rel="stylesheet" type="text/css" href="css/styles.css">
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta
 						name="description"
 						content="A Developer blog for Chris Hughes. Specializes in JavaScript, Rust, Web development, SQL" />
 				<script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
 		</head>
 		<body>
-				<header>
+				<header ="desktop">
 						<a href="#"
 							 hx-get="http://localhost:3322/cards"
 							 hx-swap="innerHTML"
@@ -25,6 +26,7 @@
 								Github
 						</a>
 				</header>
+				<h1 class="mobile-h1">Chris Hughes dot Dev</h1>
 				<nav hx-get="http://localhost:3322/blog"
 						 hx-trigger="load delay:300ms"
 						 class="linksBar"
