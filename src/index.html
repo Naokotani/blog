@@ -14,9 +14,9 @@
 		<body>
 				<header ="desktop">
 						<a href="#"
-							 hx-get="http://localhost:3322/cards"
+							 hx-get="https://chris-hughes.dev/cards"
 							 hx-swap="innerHTML"
-							 hx-push-url="http://localhost:3322/"
+							 hx-push-url="https://chris-hughes.dev/"
 							 hx-target="#contentDiv">
 						<h1>Chris Hughes dot Dev</h1>
 						</a>
@@ -27,14 +27,14 @@
 						</a>
 				</header>
 				<h1 class="mobile-h1">Chris Hughes dot Dev</h1>
-				<nav hx-get="http://localhost:3322/blog"
+				<nav hx-get="https://chris-hughes.dev/blog"
 						 hx-trigger="load delay:300ms"
 						 class="linksBar"
 						 hx-swap="outerHTML">
 						<h2 class="post-header">Projects</h2>
 				</nav>
 				<div id="contentDiv"
-						 hx-get="http://localhost:3322/cards"
+						 hx-get="https://chris-hughes.dev/cards"
 						 hx-trigger="load delay:300ms"
 						 hx-swap="innerHTML"
 						 hx-target="#contentDiv"></div>

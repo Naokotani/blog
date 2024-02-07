@@ -127,15 +127,17 @@ anthropology from Trent University and studied Editing at George Brown College.
 </p>
 <div class="cards">
 {{@each(it.links) => val, index}}
-<a href="#" hx-get="${API_URL}blog/{{val}}" hx-push-url="true" hx-target="#contentDiv" hx-swap="innerHTML">
+<div class="cards-grid">
 <div class="card">
+<a href="#" hx-get="${API_URL}blog/{{val}}" hx-push-url="true" hx-target="#contentDiv" hx-swap="innerHTML">
 <img alt="{{it.titles[index]}} picture" src="/images/{{it.images[index]}}"/>
 <div class="card-content">
 <h2>{{it.titles[index]}}</h2>
 <p>{{it.summaries[index]}}</p>
 </div>
-</div>
 </a>
+</div>
+</div>
 {{/each}}
 </div>
 </div>

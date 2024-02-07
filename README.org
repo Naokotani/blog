@@ -13,3 +13,4 @@ I simply use the following Elisp function to send the data to the server:
                "/rsync:server:/path/to/images" t)
     (copy-file filename "/rsync:server/path/to/html" t)))
 #+end_src
+

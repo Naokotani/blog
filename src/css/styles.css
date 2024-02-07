@@ -235,6 +235,7 @@ div.summary {
 	min-height: 20rem;
 	background-color: var(--grey);
 	border-radius: 5px;
+	margin-bottom: 2rem;
 }
 
 .card img {
@@ -264,12 +265,11 @@ div.card-content h2 p {
 
 @media (min-width: 1600px) {
 	.cards {
-    --gridCols: 2;
-    display: grid;
-    grid-template-columns: repeat(var(--gridCols), 1fr);
-    gap: 5px;
-		display: flex;
-		justify-content: space-between;
+		--gridCols: 2;
+		display: grid;
+		grid-template-columns: repeat(var(--gridCols), 1fr);
+		gap: 5px;
+		margin: auto;
 	}
 }
 
@@ -294,6 +294,11 @@ div.card-content h2 p {
 		border-radius: 5px;
 		min-height: calc(100vh - var(--headerHeight));
 		padding-bottom: 5rem;
+	}
+
+	.cards-grid {
+		display: flex;
+		justify-content: center;
 	}
 
 	.card img {
