@@ -103,7 +103,7 @@ function getTemplate() {
 		<ul>
 				{{@each(it.files) => val, index}}
 				<li>
-						<a href="#" hx-push-url="true" hx-get="${API_URL}blog/{{val}}" hx-target="#contentDiv" hx-swap="innerHTML">
+						<a href="#" hx-push-url="true" hx-get="${API_URL}blog/{{val}}" hx-target="#contentDiv" hx-on::after-request="window.scrollTo({top: 0, behavior: 'smooth'})" hx-swap="innerHTML">
 						{{it.labels[index]}}
 						</a>
 				</li>
@@ -129,7 +129,11 @@ anthropology from Trent University and studied Editing at George Brown College.
 {{@each(it.links) => val, index}}
 <div class="cards-grid">
 <div class="card">
-<a href="#" hx-get="${API_URL}blog/{{val}}" hx-push-url="true" hx-target="#contentDiv" hx-swap="innerHTML">
+<a href="#"
+hx-get="${API_URL}blog/{{val}}"
+hx-push-url="true" hx-target="#contentDiv"
+hx-on::after-request="window.scrollTo({top: 0, behavior: 'smooth'})"
+hx-swap="innerHTML">
 <img alt="{{it.titles[index]}} picture" src="/images/{{it.images[index]}}"/>
 <div class="card-content">
 <h2>{{it.titles[index]}}</h2>
@@ -163,6 +167,7 @@ function newRoute() {
 						<a href="#"
 							 hx-get="${API_URL}cards"
 							 hx-swap="innerHTML"
+						   hx-on::after-request="window.scrollTo({top: 0, behavior: 'smooth'})"
 							 hx-push-url="${API_URL}"
 							 hx-target="#contentDiv">
 						<h1>Chris Hughes dot Dev</h1>
@@ -175,12 +180,14 @@ function newRoute() {
 				<nav hx-get="${API_URL}blog"
 						 hx-trigger="load delay:300ms"
 						 class="linksBar"
+						 hx-on::after-request="window.scrollTo({top: 0, behavior: 'smooth'})"
 						 hx-swap="outerHTML">
 						<h2 class="post-header">Projects</h2>
 				</nav>
 				<div id="contentDiv"
 						 hx-get="${API_URL}blog/{{it.route}}"
 						 hx-trigger="load delay:300ms"
+						 hx-on::after-request="window.scrollTo({top: 0, behavior: 'smooth'})"
 						 hx-swap="innerHTML"
 						 hx-target="#contentDiv"></div>
 		</body>
