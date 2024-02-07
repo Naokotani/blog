@@ -1,0 +1,15 @@
+* Emacs as a CMS blog
+
+This is a simple node application that runs a web server that accepts files from =org-html-export-to-html=, and uses the [[https://cheerio.js.org/][cheerio]] to grab summary information and [[https://squirrelly.js.org/][squirrelly]] to generate HTML templates to display them on the client. 
+
+I simply use the following Elisp function to send the data to the server:
+
+#+begin_src emacs-lisp
+(defun nao/export-org-to-blog ()
+  (interactive)
+  (setq org-html-doctype "html5")
+  (let ((filename (org-html-export-to-html nil nil nil t)))
+    (copy-file (concat (file-name-sans-extension filename) ".png")
+               "/rsync:server:/path/to/images" t)
+    (copy-file filename "/rsync:server/path/to/html" t)))
+#+end_src
